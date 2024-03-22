@@ -1,7 +1,9 @@
 package com.lautadev.demo.service;
 
+import com.lautadev.demo.dto.InscripcionesDTO;
 import com.lautadev.demo.model.Inscripcion;
 import com.lautadev.demo.repository.IInscripcionRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +38,40 @@ public class InscripcionService implements IInscripcionService{
     @Override
     public void editarInscripcion(Inscripcion inscripcion) {
         this.crearInscripcion(inscripcion);
+    }
+
+    @Override
+    public List<InscripcionesDTO> traerInscripcionesDto() {
+        List<Inscripcion> listaInscripciones =  this.traerInscripcion();
+        List<InscripcionesDTO> listaInscripcionesDto = new ArrayList<>();
+        for(Inscripcion inscripcion: listaInscripciones){
+            InscripcionesDTO inscripDto = new InscripcionesDTO();
+            inscripDto.setId(inscripcion.getId());
+            inscripDto.setFechaLlamado(inscripcion.getFecha_llamado());
+            inscripDto.setNombre_alumno(inscripcion.getAlumno().getNombre() );
+            inscripDto.setId_alumno(inscripcion.getAlumno().getId() );
+            inscripDto.setId_mesa(inscripcion.getMesa().getId() );
+            inscripDto.setApellido_alumno(inscripcion.getAlumno().getApellido() );
+            inscripDto.setPropuesta(inscripcion.getMesa().getPropuesta() );
+            inscripDto.setNombreMateria(inscripcion.getMesa().getNombre_materia() );
+            inscripDto.setPresidente(inscripcion.getMesa().getPresidente() );
+            inscripDto.setPrimerVocal(inscripcion.getMesa().getPrimer_vocal() );
+            inscripDto.setSegundoVocal(inscripcion.getMesa().getSegundo_vocal() );
+            listaInscripcionesDto.add(inscripDto);
+        }
+        
+        return listaInscripcionesDto;
+    }
+
+    @Override
+    public InscripcionesDTO traerInscripcionDto(Long id) {
+        List<InscripcionesDTO> listaInscripcionesDto = this.traerInscripcionesDto();
+        for(InscripcionesDTO inscripDto:listaInscripcionesDto){
+            if(inscripDto.getId().equals(id)){
+                return inscripDto;
+            }
+        }
+        return null;
     }
     
 }

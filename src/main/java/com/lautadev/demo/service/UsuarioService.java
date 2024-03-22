@@ -45,5 +45,17 @@ public class UsuarioService implements IUsuarioService{
     public void editarUsuario(Usuario usuario) {
         this.crearUsuario(usuario);
     }
-    
+
+    @Override
+    public Usuario login(Usuario usuario) {
+        List<Usuario> listaUsuarios = this.traerUsuario();
+        for (Usuario usu : listaUsuarios) {
+            if (usuario.getNombre_usuario().equals(usu.getNombre_usuario())
+                    && usuario.getContrasenia_usuario().equals(usu.getContrasenia_usuario())) {
+                return usu; // Devolver el usuario encontrado en la lista
+            }
+        }
+        return null; // Si no se encuentra coincidencia, devolver null
+    }
+
 }

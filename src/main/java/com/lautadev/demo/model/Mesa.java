@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,8 +19,8 @@ public class Mesa {
     private Long id;
     private String propuesta;
     private String nombre_materia;
-    private LocalDate fecha_primer_llamado;
-    private LocalDate fecha_segundo_llamado;
+    private Date fecha_primer_llamado;
+    private Date fecha_segundo_llamado;
     private String presidente;
     private String primer_vocal;
     private String segundo_vocal;
@@ -29,7 +30,7 @@ public class Mesa {
     public Mesa() {
     }
 
-    public Mesa(Long id, String propuesta, String nombre_materia, LocalDate fecha_primer_llamado, LocalDate fecha_segundo_llamado, String presidente, String primer_vocal, String segundo_vocal, List<Inscripcion> listaInscripciones) {
+    public Mesa(Long id, String propuesta, String nombre_materia, Date fecha_primer_llamado, Date fecha_segundo_llamado, String presidente, String primer_vocal, String segundo_vocal, List<Inscripcion> listaInscripciones) {
         this.id = id;
         this.propuesta = propuesta;
         this.nombre_materia = nombre_materia;
@@ -39,5 +40,5 @@ public class Mesa {
         this.primer_vocal = primer_vocal;
         this.segundo_vocal = segundo_vocal;
         this.listaInscripciones = listaInscripciones;
-    }          
+    }       
 }

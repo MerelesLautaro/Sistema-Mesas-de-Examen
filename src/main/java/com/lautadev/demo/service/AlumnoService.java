@@ -2,6 +2,8 @@ package com.lautadev.demo.service;
 
 import com.lautadev.demo.model.Alumno;
 import com.lautadev.demo.repository.IAlumnoRepository;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +38,5 @@ public class AlumnoService implements IAlumnoService {
     @Override
     public void editarAlumno(Alumno alumno) {
         this.crearAlumno(alumno);
-    }
-    
+    }    
 }

@@ -46,4 +46,9 @@ public class UsuarioController {
         usuServ.editarUsuario(usuario);
         return usuServ.findUsuario(usuario.getId());
     }
+    
+    @PostMapping("/usuario/login")
+    public Usuario login(@RequestBody Usuario usuario){
+        return usuServ.login(usuario);
+    }
 }

@@ -46,5 +46,6 @@ public class AlumnoController {
         alumnoServ.editarAlumno(alumno);
         return alumnoServ.findAlumno(alumno.getId());
     }
+    
 }
 

@@ -9,4 +9,5 @@ public interface IUsuarioService {
     public Usuario findUsuario(Long id);
     public void eliminarUsuario(Long id);
     public void editarUsuario(Usuario usuario);
+    public Usuario login(Usuario usuario);
 }
